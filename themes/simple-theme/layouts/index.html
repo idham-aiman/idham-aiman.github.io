@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section class="hero">
+    <h2>Welcome — placeholder headline</h2>
+    <p>Placeholder intro text. This is a portfolio-like site where posts are categorized by section.</p>
+  </section>
+
+  <section class="sections">
+    <h3>Sections</h3>
+    <ul class="section-list">
+      <li><a href="{{ "/writing/" | relURL }}">Writing</a></li>
+      <li><a href="{{ "/drawing/" | relURL }}">Drawing</a></li>
+      <li><a href="{{ "/electronics/" | relURL }}">Electronics</a></li>
+      <li><a href="{{ "/language-learning/" | relURL }}">Language Learning</a></li>
+    </ul>
+  </section>
+
+  <section class="recent">
+    <h3>Recent posts</h3>
+    <ul>
+      {{ range first 5 .Site.RegularPages }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — <small>{{ .Date.Format "Jan 2, 2006" }}</small></li>
+      {{ end }}
+    </ul>
+  </section>
+{{ end }}
